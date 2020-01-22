@@ -69,7 +69,7 @@ def logout():
         session.pop("state")
         flash("You have been logged out")
     except:
-        flash("Error logging out")
+        flash("Error logging out", "error")
     return redirect(url_for("index"))
 
 

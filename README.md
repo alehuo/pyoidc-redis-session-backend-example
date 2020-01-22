@@ -10,4 +10,4 @@ This repository contains an example project that is used to demo the Redis-based
 4. Set environment variables
 5. Run `python3 src/app.py`
 
-..or run `docker-compose up --build` and watch the magic happen
+..or run `docker-compose up --build` and watch the magic happen. Remember to set environment variables.

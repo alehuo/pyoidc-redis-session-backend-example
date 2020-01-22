@@ -5,15 +5,15 @@ services:
     ports:
       - "5000:5000"
     environment:
-        - SERVER_ADDRESS=
-        - OIDC_SERVER_URL=
-        - OIDC_CLIENT_ID=
-        - OIDC_CLIENT_SECRET=
-        - SESSION_SECRET_KEY=unsecure
-        - FLASK_ENV=development
-        - SESSION_TYPE=redis
-        - SESSION_REDIS_HOST=redis
-        - SESSION_REDIS_PORT=6379
+        - SERVER_ADDRESS=${SERVER_ADDRESS}
+        - OIDC_SERVER_URL=${OIDC_SERVER_URL}
+        - OIDC_CLIENT_ID=${OIDC_CLIENT_ID}
+        - OIDC_CLIENT_SECRET=${OIDC_CLIENT_SECRET}
+        - SESSION_SECRET_KEY=${SESSION_SECRET_KEY}
+        - FLASK_ENV=${FLASK_ENV}
+        - SESSION_TYPE=${SESSION_TYPE}
+        - SESSION_REDIS_HOST=${SESSION_REDIS_HOST}
+        - SESSION_REDIS_PORT=${SESSION_REDIS_PORT}
     networks:
         - server-network
     volumes:
