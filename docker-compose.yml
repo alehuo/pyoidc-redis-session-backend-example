@@ -1,0 +1,44 @@
+version: "3"
+services:
+  server:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+        - SERVER_ADDRESS=
+        - OIDC_SERVER_URL=
+        - OIDC_CLIENT_ID=
+        - OIDC_CLIENT_SECRET=
+        - SESSION_SECRET_KEY=unsecure
+        - FLASK_ENV=development
+        - SESSION_TYPE=redis
+        - SESSION_REDIS_HOST=redis
+        - SESSION_REDIS_PORT=6379
+    networks:
+        - server-network
+    volumes:
+        - ./src:/app/src
+    restart: always
+  redis:
+    image: redis:alpine
+    entrypoint: redis-server --appendonly yes
+    ports:
+      - 6379:6379
+    networks:
+        - server-network
+    volumes:
+        - redis-session:/data
+  nginx:
+    image: nginx
+    ports:
+        - 80:80
+        - 443:443
+    volumes:
+        - ./data/nginx/nginx.conf:/etc/nginx/nginx.conf
+    networks:
+        - server-network
+    restart: always
+networks:
+    server-network:
+volumes:
+    redis-session:
