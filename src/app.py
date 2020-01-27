@@ -2,7 +2,7 @@ import os
 from pyoidc_redis_session_backend import RedisSessionBackend
 from flask import Flask, flash, session, redirect, render_template, url_for, request
 from flask_session import Session
-from config import OIDC_SERVER_URL, OIDC_CLIENT_ID, OIDC_CLIENT_SECRET, SESSION_SECRET_KEY, SESSION_TYPE, SESSION_REDIS_HOST, SESSION_REDIS_PORT, SERVER_ADDRESS
+from config import OIDC_SERVER_URL, OIDC_CLIENT_ID, OIDC_CLIENT_SECRET, SESSION_SECRET_KEY, SESSION_REDIS_HOST, SESSION_REDIS_PORT, SERVER_ADDRESS
 from oic.oic.consumer import Consumer
 from oic.utils.authn.client import ClientSecretBasic, ClientSecretPost
 
@@ -11,17 +11,12 @@ from oic.utils.http_util import Redirect
 import redis
 from oic.exception import AccessDenied
 
-app = Flask(__name__)
-app.config["SECRET_KEY"] = SESSION_SECRET_KEY
 redisClient = redis.Redis(SESSION_REDIS_HOST, SESSION_REDIS_PORT)
 
-if(SESSION_TYPE == "redis"):
-    print("Using Redis as session storage")
-    app.config['SESSION_TYPE'] = 'redis'
-    app.config['SESSION_REDIS'] = redisClient
-else:
-    print("Using filesystem as session storage")
-    app.config['SESSION_TYPE'] = 'filesystem'
+app = Flask(__name__)
+app.config["SECRET_KEY"] = SESSION_SECRET_KEY
+app.config['SESSION_TYPE'] = 'redis'
+app.config['SESSION_REDIS'] = redisClient
 
 Session(app)
 
