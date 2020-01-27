@@ -10,9 +10,8 @@ Before running these steps, make sure you have an OIDC provider that you can use
 
 1. Create and activate Python virtual env: `python3 -m venv env` and `source env/bin/activate`
 2. Run `pip install -r requirements.txt`
-3. Run `pip install -i https://test.pypi.org/simple/ pyoidc-redis-session-backend-alehuo==1.0.7` (This package is not on the main PyPi repository)
-4. Set environment variables
-5. Run `python3 src/app.py`
+3. Set environment variables
+4. Run `python3 src/app.py`
 
 ..or run `docker-compose up --build` and watch the magic happen. Remember to set the required environment variables.
 

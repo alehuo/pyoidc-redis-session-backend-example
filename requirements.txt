@@ -19,6 +19,7 @@ pycparser==2.19
 pycryptodome==3.9.4
 pycryptodomex==3.9.4
 pyjwkest==1.4.2
+pyoidc-redis-session-backend==1.0.1
 redis==3.3.11
 requests==2.22.0
 six==1.14.0
