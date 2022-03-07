@@ -11,7 +11,7 @@ services:
         - OIDC_CLIENT_ID=${OIDC_CLIENT_ID}
         - OIDC_CLIENT_SECRET=${OIDC_CLIENT_SECRET}
         - SESSION_SECRET_KEY=unsafe
-        - SESSION_REDIS_HOST=http://redis
+        - SESSION_REDIS_HOST=redis
         - SESSION_REDIS_PORT=6379
     networks:
         - server-network
